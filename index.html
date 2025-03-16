@@ -3,76 +3,339 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/@iconscout/unicons/css/line.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="script.js"></script>
     <link rel="stylesheet" href="styles.css">
-    <title>IAB</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <title>Dashboard</title> 
 </head>
 <body>
-    <!-- Hero -->
-    <section class="et-hero-tabs">
-        <h1>Welcome</h1>
-        <h3>Hello</h3>
-        <div class="et-hero-tabs-container">
-            <a class="et-hero-tab" href="#tab-home">Home</a>
-            <a class="et-hero-tab" href="#tab-catalog">Catalog</a>
-            <a class="et-hero-tab" href="#tab-people">People</a>
-            <a class="et-hero-tab" href="#tab-records">Records</a>
-            <a class="et-hero-tab" href="#tab-progress">Progress</a>
-            <span class="et-hero-tab-slider"></span>
+
+    <!-- SIDEBAR SECTION -->
+    <aside class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left" id="show-side-navigation1">
+        
+        <!-- CLOSE BUTTON FOR SIDEBAR -->
+        <i class="uil-bars close-aside d-md-none d-lg-none" data-close="show-side-navigation1"></i>
+        
+
+        <!-- SIDEBAR HEADER -->
+        <div class="sidebar-header d-flex justify-content-center align-items-center px-3 py-4">
+        
+            <!-- PROFILE IMAGE  -->
+        <img class="rounded-pill img-fluid"
+             width="65"
+             src="admin.png">
+          <div class="ms-2"></div>
+            
+            <!-- USER NAME -->
+            <h5 class="fs-6 mb-0">
+              <a class="text-decoration-none" href="#">IAB</a>
+            </h5>
+
+
+            <!-- USER DESCRIPTION -->
+            <p class="mt-1 mb-0">Lorem ipsum dolor sit amet consectetur.</p>
+          </div>
         </div>
-    </section>
 
-    <!-- Main -->
-    <main class="et-main">
-        <section class="et-slide" id="tab-home">
-            <h1>Home</h1>
-            <h3>Something about...</h3>
 
-            <div class="slider-wrapper">
-                <div class="slider-card">
-                    <div class="slider-content">
-                        <h2>Roboto Slab <span class="highlight">+Roboto</span></h2>
-                        <p>— Roboto has a dual nature. It has a mechanical skeleton, and the forms are largely geometric. 
-                            At the same time, the font features friendly and open curves.</p>
-                    </div>
+        <!-- SEARCH IN SIDEBAR -->
+        <div class="search position-relative text-center px-4 py-3 mt-2">
+            <input type="text" class="form-control w-100 border-0 bg-transparent" placeholder="Search here">
+            <i class="fa fa-search position-absolute d-block fs-6"></i>
+        </div>
+
+
+         <!-- OPEN MENU-->
+         <ul class="categories list-unstyled">
+            <!-- SIDEBAR MENU HOME-->
+            <li class="has-dropdown"> 
+                <i class="uil-estate fa-fw"></i><a href="#">Home</a>
+                <ul class="sidebar dropdown list-unstyled">
+                    <li><a href="#">Criteria</a></li>
+                    <li><a href="#">Evaluation</a></li>
+                </ul>
+            </li>
+
+
+            <!-- SIDEBAR MENU FILE MANAGER-->
+            <li class="">
+                <i class="uil-folder"></i><a href="#">File Manager</a>
+            </li>
+
+
+            <!-- SIDEBAR MENU  CATALOG-->
+            <li class="has-dropdown">
+                <i class="uil-users-alt"></i><a href="#">Catalog</a>
+                <ul class="sidebar dropdown list-unstyled">
+                    <li><a href="#">Faculty</a></li>
+                    <li><a href="#">Student</a></li>
+                    <li><a href="#">Alumni</a></li>
+                    <li><a href="#">Users</a></li>
+                </ul>
+            </li>
+
+
+            <!-- SIDEBAR MENU MAILS-->
+            <li class="">
+                <i class="uil-envelope"></i><a href="#">Mailbox</a>
+            </li>
+         </ul> <!-- CLOSE MENU -->
+    </aside>
+
+
+    <!-- SECTION WRAPPER FOR NAVIGATION BAR -->
+    <section id="wrapper">
+        <!-- NAVIGATION BAR WITH BS CLASSES -->
+        <nav class="navbar navbar-expand-md"> 
+            <div class="container-fluid mx-2">
+                <!-- NAVBAR HEADER CONTAINING BRAND AND TOGGLE  -->
+                <div class="navbar-header"> 
+                    <!-- BTN TOGGLE -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggle-navbar" aria-controls="#toggle-navbar" aria-expanded="false" aria-label="Toggle navigation"><i class="uil-bars tetx-white"></i></button>
+                    <!-- BRAND NAME FOR STYLING -->
+                    <a class="navbar-brand" href="#">admin <span class="main-color">kit</span></a>
                 </div>
-                <div class="slider-pagination">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
+                <!-- COLLAPSABLE NAVBAR -->
+                <div class="collapse navbar-collapse" id="toggle-navbar">
+                    <!-- NAVIGATION ITEMS ALIGNED TO RIGHT -->
+                    <ul class="navbar-nav ms-auto>
+
+                        
+                        <li class="navbar-item dropdown"> <!-- DROPDOWN MENU -->
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Settings
+                            </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">My account</a></li>
+                            <li><a class="dropdown-item" href="#">Help</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                    <!-- BUTTON SHOW TO THE SIDE OF NAVIGATION -->
+                    <li class="navbar-item">
+                        <a class="nav-link" href="#">
+                            <i data-show="show-side-navigation1" class="uil-bars show-side-btn"></i>
+                        </a>
+                    </li>
+                    </ul>
                 </div>
             </div>
-            
-        </section>
+        </nav>
 
 
 
-        <section class="et-slide" id="tab-catalog">
-            <h1>Catalog</h1>
-            <h3>Something about...</h3>
-        </section>
-
-
-
-        <section class="et-slide" id="tab-people">
-            <h1>People</h1>
-            <h3>Something about...</h3>
-        </section>
-
-
+        <!-- MAIN CONTENT AREA -->
+        <div class="p-4">
+            <!-- WELCOME MESSAGE -->
+            <div class="welcome">
+            <div class="content rounded-3 p-3">
+                <h1 class="fs-3">Welcome to Dashboard</h1>
+                <p class="mb-0">Hello ADMIN, see recent insights!</p>
+            </div>
+        </div>
         
-        <section class="et-slide" id="tab-records">
-            <h1>Records</h1>
-            <h3>Something about...</h3>
-        </section>
+        <!-- STATISTICS SECTION -->
+        <section class="statistics mt-4">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="box d-flex rounded-2 align-items-center mb-4 mb-lg-0 p-3">
+                        <i class="uil-envelope-shield fs-2 text-center bg-primary rounded-circle"></i>
+                        <div class="ms-3">
+                            <div class="d-flex align-items-center">
+                                <h3 class="mb-0">1,245</h3> <span class="d-block ms-2">Evaluations/span>
+                            </div>
+                            <p class="fs-normal mb-0">Forms submitted by users</p>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-lg-4">
+                <div class="box d-flex rounded-2 align-items-center mb-4 mb-lg-0 p-3">
+                    <i class="uil-file fs-2 text-center bg-danger rounded-circle"></i>
+                    <div class="ms-3">
+                        <div class="d-flex align-items-center">
+                            <h3 class="mb-0">34</h3> <span class="d-block ms-2">Action Plan</span>
+                            </div>
+                            <p class="fs-normal mb-0">Improvement documentation</p>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-lg-4">
+                <div class="box d-flex rounded-2 align-items-center p-3">
+                    <i class="uil-users-alt fs-2 text-center bg-success rounded-circle"></i>
+                    <div class="ms-3">
+                        <div class="d-flex align-items-center">
+                            <h3 class="mb-0">5,245</h3> <span class="d-block ms-2">Participants</span>
+                        </div>
+                        <p class="fs-normal mb-0">Users engaged in the system</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
         
-        <section class="et-slide" id="tab-progress">
-            <h1>Progress</h1>
-            <h3>Something about...</h3>
-        </section>
-    </main>
 
-    <!-- Script -->
-    <script src="script.js"></script>
-</body>
+
+    <!-- CHARTS SECTION -->
+    <section class="charts mt-4">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="chart-container rounded-2 p-3">
+                    <h3 class="fs-6 mb-3">Evaluation Submissions</h3>
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="chart-container rounded-2 p-3">
+                    <h3 class="fs-6 mb-3">Curriculum Performance</h3>
+                    <canvas id="myChart2"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+        
+
+
+    <!-- ADMINS SECTION -->
+    <section class="admins mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="box">
+
+                    <!-- <ADMINS LIST> -->
+                    <div class="admin d-flex align-items-center rounded-2 p-3 mb-4">
+                        <div class="img">
+                            <img class="img-fluid rounded-pill"
+                                width="75" height="75"
+                                src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148906966/small/1501685402/enhance"
+                                alt="admin">
+                    </div>
+                    <div class="ms-3">
+                        <h3 class="fs-5 mb-1">Evaluator Feedback</h3>
+                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur elit.</p>
+                        </div>
+                    </div>
+                    <div class="admin d-flex align-items-center rounded-2 p-3 mb-4">
+                        <div class="img">
+                            <img class="img-fluid rounded-pill"
+                                width="75" height="75"
+                                src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907137/small/1501685404/enhance"
+                                alt="admin">
+                        </div>
+                        <div class="ms-3">
+                            <h3 class="fs-5 mb-1">Evaluator Feedback</h3>
+                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur elit.</p>
+                        </div>
+                    </div>
+                    <div class="admin d-flex align-items-center rounded-2 p-3">
+                        <div class="img">
+                            <img class="img-fluid rounded-pill"
+                                    width="75" height="75"
+                                    src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907019/small/1501685403/enhance"
+                                    alt="admin">
+                        </div>
+                            <div class="ms-3">
+                                <h3 class="fs-5 mb-1">Evaluator Feedback</h3>
+                                <p class="mb-0">Lorem ipsum dolor sit amet consectetur elit.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-md-6">
+                <div class="box">
+
+                    <!-- MODERATORS LIST -->
+                    <div class="admin d-flex align-items-center rounded-2 p-3 mb-4">
+                        <div class="img">
+                            <img class="img-fluid rounded-pill"
+                                    width="75" height="75"
+                                    src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907114/small/1501685404/enhance"
+                                    alt="admin">
+                        </div>
+                        <div class="ms-3">
+                            <h3 class="fs-5 mb-1">Evaluator Feedback</h3>
+                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur elit.</p>
+                            </div>
+                        </div>
+                        <div class="admin d-flex align-items-center rounded-2 p-3 mb-4">
+                            <div class="img">
+                                <img class="img-fluid rounded-pill"
+                                    width="75" height="75"
+                                    src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907086/small/1501685404/enhance"
+                                    alt="admin">
+                            </div>
+                            <div class="ms-3">
+                                <h3 class="fs-5 mb-1">Evaluator Feedback/h3>
+                                <p class="mb-0">Lorem ipsum dolor sit amet consectetur elit.</p>
+                            </div>
+                        </div>
+                        <div class="admin d-flex align-items-center rounded-2 p-3">
+                            <div class="img">
+                                <img class="img-fluid rounded-pill"
+                                    width="75" height="75"
+                                    src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance"
+                                    alt="admin">
+                                
+                                </div>
+                                <div class="ms-3">
+                                    <h3 class="fs-5 mb-1">Evaluator Feedback</h3>
+                                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur elit.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+
+            <!-- STATISTICS SECTION -->
+            <section class="statis mt-4 text-center">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                        <div class="box bg-primary p-3">
+                            <i class="uil-eye"></i>
+                            <h3>5,154</h3>
+                            <p class="lead">Total Evaluations</p>
+                        </div>
+                    </div>
+                <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+                    <div class="box bg-danger p-3">
+                        <i class="uil-user"></i>
+                        <h3>245</h3>
+                        <p class="lead">Active Participants</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+                    <div class="box bg-warning p-3">
+                        <i class="uil-shopping-cart"></i>
+                        <h3>5,154</h3>
+                        <p class="lead">Curriculum Revisions</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="box bg-success p-3">
+                            <i class="uil-feedback"></i>
+                            <h3>5,154</h3>
+                            <p class="lead">Implements Changes</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+
+            <!-- ADDITIONAL CHART SECTION -->
+            <section class="charts mt-4">
+                <div class="chart-container p-3">
+                    <h3 class="fs-6 mb-3">Overall Performance</h3>
+                    <div style="height: 300px">
+                        <canvas id="myChart3" width="100%"></canvas>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
 </html>
